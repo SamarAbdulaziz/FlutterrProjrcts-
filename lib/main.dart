@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/listViewWithModel.dart';
 
-void main(){
+import 'BMIScreen.dart';
+
+void main (){
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -10,11 +10,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: UsersScreen(),
+      debugShowCheckedModeBanner: false,
+      title: 'BMI CALCULATOR',
+      home:  BMICalculator(),
     );
   }
 }
+
+
+//=====================================================================
+// import 'package:flutter/material.dart';
+// import 'Widgets/SimpleCounterExample.dart';
+//
+// void main(){
+//   runApp(MyApp());
+// }
+// class MyApp extends StatelessWidget {
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     home: SimpleCounter(),
+//     );
+//   }
+// }
 
 
 //===============================================================================
@@ -43,33 +63,8 @@ class MyApp extends StatelessWidget {
 // }
 
 //==============================================================================================
-// import 'package:flutter/material.dart';
-// import 'package:flutter_app/Widgets/ListViewExampleScreen.dart';
+
 //
-// import 'Widgets/NewsCategoryItems.dart';
-//
-// void main(){
-//
-//    runApp(MyApp());
-// }
-// class MyApp extends StatelessWidget {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title:' Lists',
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text(
-//             'List View & List Grid',
-//           ),
-//         ),
-//         body: ListViewExampleScreen(),
-//       ),
-//     );
-//   }
-// }
-//=================================================================================================================================
 // import 'package:flutter/material.dart';
 //
 // import 'MessengerScreen.dart';

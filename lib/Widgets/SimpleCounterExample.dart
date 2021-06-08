@@ -10,23 +10,54 @@ class _SimpleCounterState extends State<SimpleCounter> {
 
   @override
   Widget build(BuildContext context) {
-   return Container(
+   return Scaffold(
+     appBar:AppBar(
+       title: Text(
+         'Simple counter'
+       ),
+     ),
+       body:Container(
      width: double.infinity,
      child: Column(
        children:[
-         Text('counter $counter'),
-         FloatingActionButton(
-           onPressed:
-           onCount,
-           child:Icon(Icons.add ) ,
-         )
+         Text(
+           'counter $counter',
+         style: TextStyle(
+           fontSize: 25.0
+         ),
+         ),
+         Padding(
+           padding: const EdgeInsets.all(20.0),
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               FloatingActionButton(
+                 onPressed: onAddPressed,
+                 child:Icon(Icons.add ) ,
+               ),
+               FloatingActionButton(
+                 onPressed: onMinusPressed,
+               child: Icon(Icons.remove),
+               ),
+             ],
+           ),
+         ),
        ],
      ),
+   )
    );
   }
-  void onCount(){
+
+
+
+  void onAddPressed(){
    setState(() {
      counter++;
    });
+  }
+  void onMinusPressed(){
+    setState(() {
+      counter--;
+    });
   }
 }

@@ -90,13 +90,20 @@ class  ListViewExampleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return
+  return Scaffold(
+    appBar: AppBar(
+      title:Text(
+           'List View & List Grid',
+          ),
+    ),
+    body:
     GridView.builder(
-    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 2,
         crossAxisCount:2,
+      ),
+      itemBuilder: (context, index) => NewsCategoryItems(items[index].title, items[index].imagePath),
     ),
-    itemBuilder: (context, index) => NewsCategoryItems(items[index].title, items[index].imagePath),
   );
    }
 }
