@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'BMIScreen.dart';
+import 'Widgets/MySimpleCounter.dart';
+import 'Widgets/SimpleCounterExample.dart';
+import 'layout/home_layout_todo_app.dart';
+import 'modules/whatsapp/WhatsApp.dart';
+import 'modules/bmi/BMIScreen.dart';
+import 'modules/login/loginScreen.dart';
 
 void main (){
   runApp(MyApp());
@@ -11,8 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BMI CALCULATOR',
-      home:  BMICalculator(),
+      home: TodoApp(),
     );
   }
 }

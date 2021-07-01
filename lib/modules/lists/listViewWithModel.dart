@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/users/user_models.dart';
 
 class UsersScreen extends StatelessWidget {
 List<UserModel> users=[
@@ -128,15 +129,4 @@ List<UserModel> users=[
       ],
     ),
   );
-}
-class UserModel{
-  final int id;
-  final String name;
-  final String phone;
-
-  UserModel({
-    @required this.id,
-   @required this.name,
-   @required this.phone,
-  });
 }
