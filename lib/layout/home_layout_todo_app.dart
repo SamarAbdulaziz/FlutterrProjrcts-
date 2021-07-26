@@ -151,13 +151,13 @@ class _TodoAppState extends State<TodoApp> {
                   ),
               elevation: 20.0
             )
-            //     .closed.then((value) {
-            //   isBottomSheetShown=false;
-            //   setState(() {
-            //     //fabIcon=Icons.edit;
-            //
-            //   });
-            // })
+                .closed.then((value) {
+              isBottomSheetShown=false;
+              setState(() {
+                //fabIcon=Icons.edit;
+
+              });
+            })
             ;
             isBottomSheetShown=true;
             setState(() {
@@ -216,11 +216,11 @@ class _TodoAppState extends State<TodoApp> {
         print('error on creating table ${error.toString()}');
       });
     }, onOpen: (database) {
-      //getDataFromDatabase(database).then((value) {
-       // tasks=value;
-       // print(tasks);
+      getDataFromDatabase(database).then((value) {
+       tasks=value;
+       print(tasks);
 
-     // });
+     });
       print('database opened');
     });
   }
@@ -245,9 +245,9 @@ class _TodoAppState extends State<TodoApp> {
       return null;
     });
   }
-// Future<List<Map>> getDataFromDatabase(database) async{
-//   return await database.rawQuery('SELECT * FROM tasks');
-// }
+Future<List<Map>> getDataFromDatabase(database) async{
+  return await database.rawQuery('SELECT * FROM tasks');
+}
 //}
 // void getDataFromDatabase() async{
 //   List <Map> tasks =await database.rawQuery('SELECT * FROM tasks');
