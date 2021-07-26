@@ -55,113 +55,114 @@ class _TodoAppState extends State<TodoApp> {
       body: screens[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if(isBottomSheetShown){
-            if(formKey.currentState.validate())
-          {
-            insertIntoDatabase(
-              title: titleController.text,
-              date: dateController.text,
-              time: timeController.text,
-            ).then((value) {
-              Navigator.pop(context);
-              isBottomSheetShown=false;
-              setState(() {
-                //fabIcon=Icons.edit;
-
-              });
-            });
-
-          }
-          }else{
-            scaffoldKey.currentState.showBottomSheet(
-                  (context) => Container(
-                    color:Colors.white,
-                    padding: EdgeInsets.all(20.0,),
-                    child: Form(
-                      key: formKey,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                         defaultFormField(
-                             controller: titleController,
-                             type: TextInputType.text,
-                             validate: (String value){
-                               if(value.isEmpty) {
-                              return 'title must not be empty';
-                            }
-                               return null;
-                          },
-                             label: 'Title',
-                             prefix: Icons.title,
-                         ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          defaultFormField(
-                              controller:timeController,
-                              type: TextInputType.datetime,
-                              onTap: (){
-                                showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                ).then((value) {
-                                  timeController.text=value.format(context).toString();
-                                  print(value.format(context));
-                                });
-                              },
-                              validate: (String value){
-                                if(value.isEmpty){
-                                  return 'time must not be empty';
-                                }
-                                return null;
-                              },
-                              label: 'Time',
-                              prefix:Icons.watch_later_outlined
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          defaultFormField(
-                              controller:dateController,
-                              type: TextInputType.datetime,
-                              onTap: (){
-                             showDatePicker(
-                                 context: context,
-                                 initialDate:DateTime.now(),
-                                 firstDate: DateTime.now(),
-                                 lastDate: DateTime.now().add(Duration(days: 365)) ,
-                             ).then((value){
-
-                               dateController.text=DateFormat.yMMMd().format(value);
-                             });
-                              },
-                              validate: (String value){
-                                if(value.isEmpty){
-                                  return 'date must not be empty';
-                                }
-                                return null;
-                              },
-                              label:'Task Date',
-                              prefix:Icons.calendar_today_outlined,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-              elevation: 20.0
-            ).closed.then((value) {
-              isBottomSheetShown=false;
-              setState(() {
-                //fabIcon=Icons.edit;
-
-              });
-            });
-            Navigator.pop(context);
-            isBottomSheetShown=true;
-            setState(() {
-             // fabIcon=Icons.add;
-            });
-          }// insertIntoDatabase();
+          insertIntoDatabase();
+          // if(isBottomSheetShown){
+          //   if(formKey.currentState.validate())
+          // {
+          //   insertIntoDatabase(
+          //     // title: titleController.text,
+          //     // date: dateController.text,
+          //     // time: timeController.text,
+          //   ).then((value) {
+          //     Navigator.pop(context);
+          //     isBottomSheetShown=false;
+          //     setState(() {
+          //       //fabIcon=Icons.edit;
+          //
+          //     });
+          //   });
+          //
+          // }
+          // }else{
+          //   scaffoldKey.currentState.showBottomSheet(
+          //         (context) => Container(
+          //           color:Colors.white,
+          //           padding: EdgeInsets.all(20.0,),
+          //           child: Form(
+          //             key: formKey,
+          //             child: Column(
+          //               mainAxisSize: MainAxisSize.min,
+          //               children: [
+          //                defaultFormField(
+          //                    controller: titleController,
+          //                    type: TextInputType.text,
+          //                    validate: (String value){
+          //                      if(value.isEmpty) {
+          //                     return 'title must not be empty';
+          //                   }
+          //                      return null;
+          //                 },
+          //                    label: 'Title',
+          //                    prefix: Icons.title,
+          //                ),
+          //                 SizedBox(
+          //                   height: 15.0,
+          //                 ),
+          //                 defaultFormField(
+          //                     controller:timeController,
+          //                     type: TextInputType.datetime,
+          //                     onTap: (){
+          //                       showTimePicker(
+          //                           context: context,
+          //                           initialTime: TimeOfDay.now(),
+          //                       ).then((value) {
+          //                         timeController.text=value.format(context).toString();
+          //                         print(value.format(context));
+          //                       });
+          //                     },
+          //                     validate: (String value){
+          //                       if(value.isEmpty){
+          //                         return 'time must not be empty';
+          //                       }
+          //                       return null;
+          //                     },
+          //                     label: 'Time',
+          //                     prefix:Icons.watch_later_outlined
+          //                 ),
+          //                 SizedBox(
+          //                   height: 15.0,
+          //                 ),
+          //                 defaultFormField(
+          //                     controller:dateController,
+          //                     type: TextInputType.datetime,
+          //                     onTap: (){
+          //                    showDatePicker(
+          //                        context: context,
+          //                        initialDate:DateTime.now(),
+          //                        firstDate: DateTime.now(),
+          //                        lastDate: DateTime.now().add(Duration(days: 365)) ,
+          //                    ).then((value){
+          //
+          //                      dateController.text=DateFormat.yMMMd().format(value);
+          //                    });
+          //                     },
+          //                     validate: (String value){
+          //                       if(value.isEmpty){
+          //                         return 'date must not be empty';
+          //                       }
+          //                       return null;
+          //                     },
+          //                     label:'Task Date',
+          //                     prefix:Icons.calendar_today_outlined,
+          //                 ),
+          //               ],
+          //             ),
+          //           ),
+          //         ),
+          //     elevation: 20.0
+          //   ).closed.then((value) {
+          //     isBottomSheetShown=false;
+          //     setState(() {
+          //       //fabIcon=Icons.edit;
+          //
+          //     });
+          //   });
+          //   Navigator.pop(context);
+          //   isBottomSheetShown=true;
+          //   setState(() {
+          //    // fabIcon=Icons.add;
+          //   });
+          // }// insertIntoDatabase();
         },
         child:isBottomSheetShown? Icon(
           Icons.add,
@@ -214,24 +215,20 @@ class _TodoAppState extends State<TodoApp> {
         print('error on creating table ${error.toString()}');
       });
     }, onOpen: (database) {
-      getDataFromDatabase(database).then((value) {
-        tasks=value;
-        print(tasks);
+      //getDataFromDatabase(database).then((value) {
+       // tasks=value;
+       // print(tasks);
 
-      });
+     // });
       print('database opened');
     });
   }
 
- Future insertIntoDatabase({
-  @required String title,
-   @required String date,
-   @required String time,
-}) async {
+ Future insertIntoDatabase() async {
     return await database.transaction((txn)
     {
       txn.rawInsert(
-              'INSERT INTO tasks(title ,date,time,status) VALUES ("$title","$date","$time","new")'
+              'INSERT INTO tasks(title ,date,time,status) VALUES ("first task","0222","891","new")'
       ).then((value)
       {
         print('$value inserted successfully');
@@ -241,13 +238,13 @@ class _TodoAppState extends State<TodoApp> {
       });
       return null;
     });
-  }
-Future<List<Map>> getDataFromDatabase(database) async{
-  return await database.rawQuery('SELECT * FROM tasks');
-}
+//   }
+// Future<List<Map>> getDataFromDatabase(database) async{
+//   return await database.rawQuery('SELECT * FROM tasks');
+// }
 }
 // void getDataFromDatabase() async{
 //   List <Map> tasks =await database.rawQuery('SELECT * FROM tasks');
 //   print (tasks);
 //
-// }
+ }
