@@ -1,4 +1,7 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/modules/counter/CounterScreen.dart';
+import 'package:flutter_app/shared/components/constants.dart';
 
 import 'Widgets/MySimpleCounter.dart';
 import 'Widgets/SimpleCounterExample.dart';
@@ -8,6 +11,8 @@ import 'modules/bmi/BMIScreen.dart';
 import 'modules/login/loginScreen.dart';
 
 void main (){
+  Bloc.observer = MyBlocObserver();
+
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
