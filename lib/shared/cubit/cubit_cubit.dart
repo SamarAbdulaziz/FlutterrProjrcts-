@@ -69,12 +69,16 @@ class AppCubit extends Cubit<AppStates> {
     @required String date,
   }) async {
     return await database.transaction((txn) {
-      txn
-          .rawInsert(
+      txn.rawInsert(
           'INSERT INTO tasks(title ,date,time,status) VALUES ("$title","$date","$time","new")')
           .then((value) {
         print('$value inserted successfully');
         emit(AppInsertDatabaseState());
+        getDataFromDatabase(database).then((value) {
+          tasks = value;
+          print(tasks);
+          emit(AppGetDatabaseState());
+        });
       }).catchError((error) {
         print('error on inserting new record ${error.toString()}');
       });
@@ -84,6 +88,14 @@ class AppCubit extends Cubit<AppStates> {
 
   Future<List<Map>> getDataFromDatabase(database) async {
     return await database.rawQuery('SELECT * FROM tasks');
+  }
+  void changeBottomSheetState({
+  @required bool isShow,
+  @required IconData icon,
+}){
+    isBottomSheetShown=isShow;
+    fabIcon=icon;
+    emit(AppChangeBottomSheetState());
   }
 
 }

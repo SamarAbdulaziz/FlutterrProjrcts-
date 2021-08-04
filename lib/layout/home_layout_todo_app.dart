@@ -29,7 +29,9 @@ class TodoApp extends StatelessWidget {
       create: (context) => AppCubit()..createDatabase(),
       child: BlocConsumer<AppCubit, AppStates>(
         listener: (context, state) {
-          // TODO: implement listener
+          if(state is AppInsertDatabaseState){
+            Navigator.pop(context);
+          }
         },
         builder: (context, state) {
           AppCubit cubit = AppCubit.get(
@@ -51,6 +53,11 @@ class TodoApp extends StatelessWidget {
               onPressed: () {
                 if (cubit.isBottomSheetShown) {
                   if (formKey.currentState.validate()) {
+                    cubit.insertIntoDatabase(
+                        title: titleController.text,
+                        time: timeController.text,
+                        date: dateController.text,
+                    );
                     // insertIntoDatabase(
                     //   title: titleController.text,
                     //   date: dateController.text,
@@ -153,12 +160,15 @@ class TodoApp extends StatelessWidget {
                           elevation: 20.0)
                       .closed
                       .then((value) {
-                    cubit.isBottomSheetShown = false;
-                    // setState(() {
-                    //   //fabIcon=Icons.edit;
-                    // });
+                    cubit.changeBottomSheetState(
+                        isShow: false,
+                        icon: Icons.edit
+                    );
                   });
-                  cubit.isBottomSheetShown = true;
+                  cubit.changeBottomSheetState(
+                      isShow: true,
+                      icon: Icons.add,
+                  );
 //                  print('${cubit.isBottomSheetShown}');// just trying to test it
                   // setState(() {
                   //   // fabIcon=Icons.add;
