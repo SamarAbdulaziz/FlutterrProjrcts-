@@ -34,8 +34,7 @@ class TodoApp extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          AppCubit cubit = AppCubit.get(
-              context); //you have to put this line inside bloc provider
+          AppCubit cubit = AppCubit.get(context); //you have to put this line inside bloc provider
 
           return Scaffold(
             key: scaffoldKey,

@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/shared/components/components.dart';
+import 'package:flutter_app/shared/cubit/cubit_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DoneTasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Done Tasks',
-        style: TextStyle(
-          fontSize: 25.0,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+    return BlocConsumer<AppCubit,AppStates>(
+      listener: (context,state){},
+      builder: (context,state){
+        var tasks=AppCubit.get(context).doneTasks;
+        return tasksBuilder(
+            tasks: tasks
+        );
+      },
     );
   }
 }
